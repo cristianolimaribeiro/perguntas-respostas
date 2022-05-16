@@ -1,0 +1,13 @@
+﻿body{
+    background: #ECEFF1;
+    font-family: 'Poppins', sans-serif;
+}
+.link-logo{
+    width: min(100%,100px);
+}
+.logo{
+    width: min(100%,100px);
+}
+textarea {
+    resize: none;
+  }

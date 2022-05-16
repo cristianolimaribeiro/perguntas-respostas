@@ -1,0 +1,29 @@
+﻿<%- include('partials/header.ejs') %>
+
+    <%- include('partials/navbar.ejs') %>
+        <div class="container">
+            <a href="/" class="btn btn-secondary mb-5">Voltar</a>
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h3><%= pergunta.title %></h3>
+                    <p><%= pergunta.description %></p>
+                </div>
+            </div>
+            <form method="POST" action="/salvarrespostas">
+                <label class="mb-1">Resposta:</label>
+                <textarea name="body" placeholder="Digite sua resposta" class="form-control mb-3"></textarea>
+                <input type="hidden" name="questionId" value="<%= pergunta.id %>">
+                <button type="submit" class="btn btn-primary">Responder</button>
+            </form>
+            <h3 class="mt-5 mb-2">Respostas Anteriores:</h3>
+            <% respostas.forEach(resposta => { %>
+                    <div class="card mb-3">
+                        <div class="card-body d-flex flex-column">
+                            <p><%= resposta.body %></p>
+                            <p class="text-end fw-bold"><%= new Intl.DateTimeFormat('pt-BR').format(new Date(resposta.createdAt)) %></p>
+                        </div>
+                    </div>
+            <% }) %>
+        </div>
+</body>
+<%- include('partials/footer.ejs') %>
